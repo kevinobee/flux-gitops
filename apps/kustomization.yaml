@@ -3,8 +3,6 @@ kind: Kustomization
 
 bases:
   - flux
-  - gatekeeper
-  - gatekeeper-policy-manager
   - litmus
   - loki
   - sealed-secrets
