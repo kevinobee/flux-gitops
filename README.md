@@ -7,8 +7,8 @@ Repository contains YAML manifests to bootstrap a Kubernetes cluster maintained 
 To install the Kubernetes cluster and applications for GitOps, run:
 
 ```shell
-git clone https://github.com/kevinobee/k8s-gitops.git
-cd k8s-gitops
+git clone https://github.com/kevinobee/flux-gitops.git
+cd flux-gitops
 ./install.sh
 ```
 
@@ -66,7 +66,7 @@ The `install.sh` script will add a few useful tools to your environment for work
 
 ## Build Automation
 
-Refer to the [Static Analysis](https://github.com/kevinobee/k8s-gitops/actions/workflows/static-analysis.yml) action and [Code scanning alerts](https://github.com/kevinobee/k8s-gitops/security/code-scanning) on GitHub for security and configuration scan results.
+Refer to the [Static Analysis](https://github.com/kevinobee/flux-gitops/actions/workflows/static-analysis.yml) action and [Code scanning alerts](https://github.com/kevinobee/flux-gitops/security/code-scanning) on GitHub for security and configuration scan results.
 
 ## References
 
