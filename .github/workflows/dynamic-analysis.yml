@@ -2,8 +2,8 @@ name: Dynamic Analysis
 
 on:
 
-  schedule:
-    - cron: '0 5 * * *'  # 5 minutes past midnight every day
+  # schedule:
+  #   - cron: '0 5 * * *'  # 5 minutes past midnight every day
 
   workflow_dispatch:
 

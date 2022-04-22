@@ -6,5 +6,5 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: main
-  url: https://github.com/kevinobee/k8s-gitops
+    branch: fluxcd
+  url: https://github.com/kevinobee/flux-gitops

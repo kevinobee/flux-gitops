@@ -3,10 +3,9 @@ kind: Kustomization
 
 bases:
   - flux
-  - cert-manager
   - gatekeeper
-  - cluster-addons
-  - ingress-nginx
+  - gatekeeper-policy-manager
+  - litmus
   - loki
-  - metallb
   - sealed-secrets
+  - starboard-system
