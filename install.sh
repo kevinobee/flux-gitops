@@ -55,6 +55,11 @@ kubectl get kustomizations.kustomize.toolkit.fluxcd.io -A
 
 echo
 echo
+echo "To watch Flux kustomizations run:"
+echo
+echo "kubectl get kustomizations.kustomize.toolkit.fluxcd.io -A -w"
+echo
+echo
 echo "To open the Linkerd UI run:"
 echo
 echo "linkerd viz dashboard"
