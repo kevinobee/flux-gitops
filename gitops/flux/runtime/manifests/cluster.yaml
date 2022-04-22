@@ -63,35 +63,35 @@ spec:
       kind: DaemonSet
       name: speaker
       namespace: metallb-system
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
-kind: Kustomization
-metadata:
-  name: cert-manager
-  namespace: cert-manager
-spec:
-  dependsOn:
-  - name: linkerd-viz
-  interval: 3m0s
-  path: ./gitops/flux/runtime/source/cert-manager
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: gitops
-  validation: client
-  healthChecks:
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: cert-manager
-      namespace: cert-manager
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: cert-manager-cainjector
-      namespace: cert-manager
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: cert-manager-webhook
-      namespace: cert-manager
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+# kind: Kustomization
+# metadata:
+#   name: cert-manager
+#   namespace: cert-manager
+# spec:
+#   dependsOn:
+#   - name: linkerd-viz
+#   interval: 3m0s
+#   path: ./gitops/flux/runtime/source/cert-manager
+#   prune: true
+#   sourceRef:
+#     kind: GitRepository
+#     name: gitops
+#   validation: client
+#   healthChecks:
+#     - apiVersion: apps/v1
+#       kind: Deployment
+#       name: cert-manager
+#       namespace: cert-manager
+#     - apiVersion: apps/v1
+#       kind: Deployment
+#       name: cert-manager-cainjector
+#       namespace: cert-manager
+#     - apiVersion: apps/v1
+#       kind: Deployment
+#       name: cert-manager-webhook
+#       namespace: cert-manager
 # ---
 # apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 # kind: Kustomization
