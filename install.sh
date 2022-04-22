@@ -17,18 +17,19 @@ fi
 
 brewTools=( \
   "kind" \
-  "fluxcd/tap/flux" \
   "linkerd" \
   "octant"
 )
 
 for i in "${brewTools[@]}"
 do
-  if [[ ! $(brew info "${i}") ]]; then
+  if [[ ! $(which "${i}") ]]; then
     echo "Installing ${i} CLI ... "
     brew install ${i} -q
   fi
 done
+
+brew install "fluxcd/tap/flux" -q
 
 if [ ! $(kind get clusters --quiet) ]; then
   kind create cluster --config kind-config.yaml --wait 1m
