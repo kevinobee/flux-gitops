@@ -7,3 +7,4 @@ bases:
   - linkerd
   - linkerd-viz
   - metallb
+  - sealed-secrets

@@ -1,8 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-bases:
-  - flux
-  - litmus
-  - loki
-  - starboard-system
+resources:
+  - bitnami-repo.yaml
+  - sealed-secrets.yaml
