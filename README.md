@@ -1,6 +1,6 @@
-# GitOps with Kubernetes using Argo CD & Kustomize
+# GitOps with Kubernetes using Flux & Kustomize
 
-Repository contains YAML manifests to bootstrap a Kubernetes cluster maintained by [Argo CD](https://argoproj.github.io/cd/).
+Repository contains YAML manifests to bootstrap a Kubernetes cluster maintained by [Flux](https://fluxcd.io/).
 
 ## Getting Started
 
@@ -16,29 +16,9 @@ The installation script uses the [Kind](https://kind.sigs.k8s.io/) tool, which o
 
 Your cluster and applications are now running, time to start developing.
 
-## Argo CD
-
-The `install.sh` script creates the core applications in the cluster required for GitOps, primarily Argo CD.
-
-The Argo CD UI can be accessed by loading <https://localhost:8080/> in a browser.
-
-The `admin` users password is stored in `ARGOCD_PWD` environment variable by the `install.sh` script. Alternatively view the password by running the following commands:
-
-```shell
-export ARGOCD_PWD=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode)
-echo ${ARGOCD_PWD}
-```
-
 ## GitOps
 
-After running the `install.sh` script create the `gitops` application in Argo CD following the [App of Apps](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#app-of-apps) pattern. Run the following commands:
-
-```shell
-kubectl apply -f gitops.yaml
-argocd app sync gitops
-```
-
-After Argo CD has synced the applications the following services will be exposed via a load balancer and ingress:
+After Flux has synced the applications the following services will be exposed via a load balancer and ingress:
 
 * Gatekeeper Policy Manager (GPM)
 
@@ -72,7 +52,7 @@ echo "${LB_IP} gpm.local litmus.local loki.local" | sudo tee -a /etc/hosts
 
 ## CLI Tooling
 
-The `install.sh` script will add a few useful tools to your environment for working with the Kubernetes cluster. The script itself makes use of [argocd](https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd/) and [linkerd](https://linkerd.io/2.10/reference/cli/) CLI tooling. Other tools are detailed below:
+The `install.sh` script will add a few useful tools to your environment for working with the Kubernetes cluster. The script itself makes use of [Flux](https://fluxcd.io/) and [linkerd](https://linkerd.io/2.10/reference/cli/) CLI tooling. Other tools are detailed below:
 
 1. [Octant](https://octant.dev/) is an open source developer-centric web interface for Kubernetes that lets you inspect a Kubernetes cluster and its applications.
 
@@ -90,7 +70,7 @@ Refer to the [Static Analysis](https://github.com/kevinobee/k8s-gitops/actions/w
 
 ## References
 
-* [Argo CD](https://argoproj.github.io/cd/) declarative, GitOps continuous delivery tool for Kubernetes.
+* [Flux](https://fluxcd.io/) declarative, GitOps continuous delivery tool for Kubernetes.
 
 * [Loki](https://grafana.com/oss/loki/) monitoring stack.
 

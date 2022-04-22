@@ -2,9 +2,7 @@
     "cSpell.words": [
       "alertmanager",
       "apiserver",
-      "applicationset",
       "aquasecurity",
-      "argocd",
       "argoproj",
       "armobest",
       "backoff",
@@ -17,6 +15,7 @@
       "devopsbest",
       "finalizer",
       "finalizers",
+      "fluxcd",
       "giantswarm",
       "gitops",
       "GOPATH",
