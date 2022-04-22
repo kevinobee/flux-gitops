@@ -49,7 +49,9 @@ kubectl apply -k gitops/flux/runtime/manifests
 # kubectl apply -f gitops/flux/apps/manifests/apps.yaml
 
 echo
-linkerd check
+kubectl get gitrepository.source.toolkit.fluxcd.io -A
+echo
+kubectl get kustomizations.kustomize.toolkit.fluxcd.io -A
 
 echo
 echo
