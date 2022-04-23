@@ -4,3 +4,5 @@ kind: Kustomization
 resources:
   - bitnami-repo.yaml
   - sealed-secrets.yaml
+
+namespace: kube-system
