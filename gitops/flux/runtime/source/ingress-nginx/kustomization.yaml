@@ -1,21 +1,13 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-commonLabels:
-  k8s-app: ingress-nginx
-
 resources:
   - namespace.yaml
-
-helmCharts:
-  - name: ingress-nginx
-    repo: https://kubernetes.github.io/ingress-nginx
-    version: 4.0.19
-    releaseName: ingress-nginx
-    namespace: ingress-nginx
-    valuesFile: values.yaml
+  - ingress-nginx-repo.yaml
+  - ingress-nginx.yaml
 
 namespace: ingress-nginx
 
-patchesStrategicMerge:
-  - CVE-2021-25742-configmap.yaml
+
+# patchesStrategicMerge:
+#   - CVE-2021-25742-configmap.yaml
