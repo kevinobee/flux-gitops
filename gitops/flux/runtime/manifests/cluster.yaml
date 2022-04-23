@@ -46,7 +46,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-  - name: linkerd-viz
+  - name: linkerd
   interval: 3m0s
   path: ./gitops/flux/runtime/source/cert-manager
   prune: true
@@ -67,7 +67,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-  - name: linkerd-viz
+  - name: linkerd
   interval: 3m0s
   path: ./gitops/flux/runtime/source/sealed-secrets
   prune: true
@@ -88,7 +88,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-  - name: linkerd-viz
+  - name: linkerd
   interval: 3m0s
   path: ./gitops/flux/runtime/source/metallb
   prune: true
@@ -126,48 +126,6 @@ spec:
       kind: HelmRelease
       name: ingress-nginx
       namespace: ingress-nginx
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
-# kind: Kustomization
-# metadata:
-#   name: ambassador
-#   namespace: flux-system
-# spec:
-#   dependsOn:
-#   - name: linkerd-viz
-#   interval: 3m0s
-#   path: ./gitops/flux/runtime/source/ambassador
-#   prune: true
-#   sourceRef:
-#     kind: GitRepository
-#     name: gitops
-#   validation: client
-#   healthChecks:
-#     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
-#       kind: HelmRelease
-#       name: ambassador-edge-stack
-#       namespace: ambassador
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
-# kind: Kustomization
-# metadata:
-#   name: flagger
-#   namespace: flux-system
-# spec:
-#   dependsOn:
-#   - name: linkerd-viz
-#   interval: 1m0s
-#   path: ./gitops/flux/runtime/source/flagger
-#   prune: true
-#   sourceRef:
-#     kind: GitRepository
-#     name: gitops
-#   validation: client
-#   healthChecks:
-#     - apiVersion: apps/v1
-#       kind: Deployment
-#       name: flagger
-#       namespace: linkerd-viz
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
@@ -178,13 +136,11 @@ spec:
   interval: 1m0s
   path: ./gitops/flux/runtime/source/finalizers
   dependsOn:
-    # - name: flagger
     - name: linkerd-viz
-    # - name: ambassador
     - name: cert-manager
-    - name: sealed-secrets
     - name: metallb
     - name: ingress-nginx
+    - name: sealed-secrets
   prune: true
   sourceRef:
     kind: GitRepository
