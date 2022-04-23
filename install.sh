@@ -46,7 +46,9 @@ echo
 echo "Install GitOps manifests ..."
 kubectl apply -k gitops/flux/runtime/manifests
 
-# kubectl apply -f gitops/flux/apps/manifests/apps.yaml
+echo
+echo "Install Application manifests ..."
+kubectl apply -k gitops/flux/apps/manifests
 
 echo
 kubectl get gitrepository.source.toolkit.fluxcd.io -A

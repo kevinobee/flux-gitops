@@ -1,0 +1,33 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+  name: emojivoto
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  path: ./gitops/flux/apps/source/emojivoto
+  dependsOn:
+    - name: finalizers
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: gitops
+  validation: client
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: emoji
+      namespace: emojivoto
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: vote-bot
+      namespace: emojivoto
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: web
+      namespace: emojivoto
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: voting
+      namespace: emojivoto
