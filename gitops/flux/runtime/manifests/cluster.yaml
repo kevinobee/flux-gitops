@@ -105,6 +105,27 @@ spec:
       kind: DaemonSet
       name: speaker
       namespace: metallb-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+  name: ingress-nginx
+  namespace: flux-system
+spec:
+  dependsOn:
+  - name: metallb
+  interval: 3m0s
+  path: ./gitops/flux/runtime/source/ingress-nginx
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: gitops
+  validation: client
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: ingress-nginx
+      namespace: ingress-nginx
 # ---
 # apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 # kind: Kustomization
@@ -163,6 +184,7 @@ spec:
     - name: cert-manager
     - name: sealed-secrets
     - name: metallb
+    - name: ingress-nginx
   prune: true
   sourceRef:
     kind: GitRepository
